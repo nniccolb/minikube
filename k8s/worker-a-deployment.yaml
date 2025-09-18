@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-a
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-a
+  template:
+    metadata:
+      labels:
+        app: worker-a
+    spec:
+      containers:
+      - name: worker-a
+        image: worker-a:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
